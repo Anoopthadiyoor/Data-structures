@@ -17,7 +17,6 @@ void main()
     }
     visited[1] = 1; 
     printf("\nEdges in the Minimum Spanning Tree are:\n");
-
     while (ne < n) 
     {
         min = 999; 
