@@ -78,7 +78,7 @@ int main() {
     int choice, data;
 
     while (1) {
-        printf("\nBinary Tree Operations Menu:\n");
+        printf("\nBinary Search Tree Operations Menu:\n");
         printf("1. Insert\n");
         printf("2. Delete\n");
         printf("3. In-order Traversal\n");
