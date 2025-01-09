@@ -1,0 +1,110 @@
+#include <stdio.h>
+void main()
+{
+    int setU[10], setA[10], setB[10], flag, j, unionAB[10], intersectionAB[10], diffAB[10], diffBA[10],u[10], a[10], b[10], i, nU, nA, nB;
+    printf("Enter the number of elements in the Universal Set (max 10): ");
+    scanf("%d", &nU);
+    printf("Enter the elements of the Universal Set:\n");
+    for (i = 0; i < nU; i++)
+    {
+        scanf("%d", &u[i]);
+    }
+    printf("Universal Set:\n\t");
+    for (i = 0; i < nU; i++)
+        printf("%d  ", u[i]);
+    printf("\nBitstring for U:\n\t");
+    for (i = 0; i < nU; i++)
+    {
+        setU[i] = 1; // All elements of Universal Set are present
+        printf("%d  ", setU[i]);
+    }
+    // Input Set A
+    printf("\nEnter the number of elements in Set A: ");
+    scanf("%d", &nA);
+    printf("Enter the elements of Set A:\n");
+    for (i = 0; i < nA; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+    // Generate Bitstring for A
+    for (i = 0; i < nU; i++)
+    {
+        flag = 0;
+        for (j = 0; j < nA; j++)
+        {
+            if (u[i] == a[j])
+            {
+                flag = 1;
+                break;
+            }
+        }
+        setA[i] = flag;
+    }
+    printf("Set A:\n\t");
+    for (i = 0; i < nA; i++)
+        printf("%d  ", a[i]);
+    printf("\nBitstring for A:\n\t");
+    for (i = 0; i < nU; i++)
+        printf("%d  ", setA[i]);
+    // Input Set B
+    printf("\nEnter the number of elements in Set B: ");
+    scanf("%d", &nB);
+    printf("Enter the elements of Set B:\n");
+    for (i = 0; i < nB; i++)
+    {
+        scanf("%d", &b[i]);
+    }
+    // Generate Bitstring for B
+    for (i = 0; i < nU; i++)
+    {
+        flag = 0;
+        for (j = 0; j < nB; j++)
+        {
+            if (u[i] == b[j])
+            {
+                flag = 1;
+                break;
+            }
+        }
+        setB[i] = flag;
+    }
+    printf("Set B:\n\t");
+    for (i = 0; i < nB; ++i)
+        printf("%d  ", b[i]);
+
+    printf("\nBitstring for B:\n\t");
+    for (i = 0; i < nU; ++i)
+        printf("%d  ", setB[i]);
+
+    // Union
+    printf("\nUnion of A and B:\n\t");
+    for (i = 0; i < nU; ++i)
+    {
+        unionAB[i] = setA[i] | setB[i];
+        printf("%d  ", unionAB[i]);
+    }  // Intersection
+    printf("\nIntersection of A and B:\n\t");
+    for (i = 0; i < nU; ++i)
+    {
+        intersectionAB[i] = setA[i] & setB[i];
+        printf("%d  ", intersectionAB[i]);
+    } // Difference A-B
+    printf("\nDifference A and B:\n\t");
+    for (i = 0; i < nU; ++i)
+    {
+        if (setA[i] == 1 && setB[i] == 0)
+            diffAB[i] = 1;
+        else
+            diffAB[i] = 0;
+        printf("%d  ", diffAB[i]);
+    }
+    printf("\nDifference B and A:\n\t");
+    for (i = 0; i < nU; ++i)
+    {
+        if (setA[i] == 0 && setB[i] == 1)
+            diffBA[i] = 1;
+        else
+            diffBA[i] = 0;
+        printf("%d  ", diffBA[i]);
+    }
+}
